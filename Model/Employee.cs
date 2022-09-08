@@ -18,7 +18,7 @@ namespace Aplicacion_RRHH.Model
         public string email { get; set; }
         public string address { get; set; }
         public string title { get; set; }
-        public string dateBirth { get; set; } 
+        public DateTime dateBirth { get; set; } 
         public string phone { get; set; }
         
         public ICollection<Contract> contracts { get; set; }
