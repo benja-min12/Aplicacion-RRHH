@@ -67,12 +67,21 @@ namespace Aplicacion_RRHH
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            Form7 obj1 = new Form7();
+            obj1.Show();
+            this.Hide();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Form4 obj1 = new Form4();
+            obj1.Show();
+            this.Hide();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Form8 obj1 = new Form8();
             obj1.Show();
             this.Hide();
         }
