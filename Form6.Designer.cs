@@ -54,10 +54,11 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.lblTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTitle.Font = new System.Drawing.Font("JetBrains Mono", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(33, 9);
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(44, 11);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(339, 29);
+            this.lblTitle.Size = new System.Drawing.Size(360, 33);
             this.lblTitle.TabIndex = 42;
             this.lblTitle.Text = "Ingreso de Desvinculación";
             // 
@@ -65,9 +66,10 @@
             // 
             this.lblContract.AutoSize = true;
             this.lblContract.BackColor = System.Drawing.SystemColors.Control;
-            this.lblContract.Location = new System.Drawing.Point(34, 60);
+            this.lblContract.Location = new System.Drawing.Point(45, 74);
+            this.lblContract.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblContract.Name = "lblContract";
-            this.lblContract.Size = new System.Drawing.Size(76, 13);
+            this.lblContract.Size = new System.Drawing.Size(99, 17);
             this.lblContract.TabIndex = 32;
             this.lblContract.Text = "ID de Contrato";
             // 
@@ -75,9 +77,10 @@
             // 
             this.lblRut.AutoSize = true;
             this.lblRut.BackColor = System.Drawing.SystemColors.Control;
-            this.lblRut.Location = new System.Drawing.Point(34, 99);
+            this.lblRut.Location = new System.Drawing.Point(45, 122);
+            this.lblRut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRut.Name = "lblRut";
-            this.lblRut.Size = new System.Drawing.Size(24, 13);
+            this.lblRut.Size = new System.Drawing.Size(30, 17);
             this.lblRut.TabIndex = 33;
             this.lblRut.Text = "Rut";
             // 
@@ -85,9 +88,10 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.BackColor = System.Drawing.SystemColors.Control;
-            this.lblName.Location = new System.Drawing.Point(34, 181);
+            this.lblName.Location = new System.Drawing.Point(45, 223);
+            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(49, 13);
+            this.lblName.Size = new System.Drawing.Size(65, 17);
             this.lblName.TabIndex = 34;
             this.lblName.Text = "Nombres";
             // 
@@ -95,9 +99,10 @@
             // 
             this.lblAP.AutoSize = true;
             this.lblAP.BackColor = System.Drawing.SystemColors.Control;
-            this.lblAP.Location = new System.Drawing.Point(34, 214);
+            this.lblAP.Location = new System.Drawing.Point(45, 263);
+            this.lblAP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAP.Name = "lblAP";
-            this.lblAP.Size = new System.Drawing.Size(83, 13);
+            this.lblAP.Size = new System.Drawing.Size(111, 17);
             this.lblAP.TabIndex = 35;
             this.lblAP.Text = "Apellido paterno";
             // 
@@ -105,78 +110,88 @@
             // 
             this.lblAM.AutoSize = true;
             this.lblAM.BackColor = System.Drawing.SystemColors.Control;
-            this.lblAM.Location = new System.Drawing.Point(34, 250);
+            this.lblAM.Location = new System.Drawing.Point(45, 308);
+            this.lblAM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAM.Name = "lblAM";
-            this.lblAM.Size = new System.Drawing.Size(85, 13);
+            this.lblAM.Size = new System.Drawing.Size(114, 17);
             this.lblAM.TabIndex = 36;
             this.lblAM.Text = "Apellido materno";
             // 
             // txtBoxID
             // 
-            this.txtBoxID.Location = new System.Drawing.Point(205, 60);
+            this.txtBoxID.Location = new System.Drawing.Point(273, 74);
+            this.txtBoxID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxID.Name = "txtBoxID";
-            this.txtBoxID.Size = new System.Drawing.Size(186, 20);
+            this.txtBoxID.Size = new System.Drawing.Size(247, 22);
             this.txtBoxID.TabIndex = 37;
             // 
             // txtBoxRut
             // 
-            this.txtBoxRut.Location = new System.Drawing.Point(205, 99);
+            this.txtBoxRut.Location = new System.Drawing.Point(273, 122);
+            this.txtBoxRut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxRut.Name = "txtBoxRut";
-            this.txtBoxRut.Size = new System.Drawing.Size(186, 20);
+            this.txtBoxRut.Size = new System.Drawing.Size(247, 22);
             this.txtBoxRut.TabIndex = 38;
             // 
             // txtBoxName
             // 
-            this.txtBoxName.Location = new System.Drawing.Point(205, 173);
+            this.txtBoxName.Location = new System.Drawing.Point(273, 213);
+            this.txtBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(186, 20);
+            this.txtBoxName.Size = new System.Drawing.Size(247, 22);
             this.txtBoxName.TabIndex = 39;
             // 
             // txtBoxAP
             // 
-            this.txtBoxAP.Location = new System.Drawing.Point(205, 206);
+            this.txtBoxAP.Location = new System.Drawing.Point(273, 254);
+            this.txtBoxAP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxAP.Name = "txtBoxAP";
-            this.txtBoxAP.Size = new System.Drawing.Size(186, 20);
+            this.txtBoxAP.Size = new System.Drawing.Size(247, 22);
             this.txtBoxAP.TabIndex = 40;
             // 
             // txtBoxAM
             // 
-            this.txtBoxAM.Location = new System.Drawing.Point(205, 250);
+            this.txtBoxAM.Location = new System.Drawing.Point(273, 308);
+            this.txtBoxAM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxAM.Name = "txtBoxAM";
-            this.txtBoxAM.Size = new System.Drawing.Size(186, 20);
+            this.txtBoxAM.Size = new System.Drawing.Size(247, 22);
             this.txtBoxAM.TabIndex = 41;
             // 
             // lblDV
             // 
             this.lblDV.AutoSize = true;
             this.lblDV.BackColor = System.Drawing.SystemColors.Control;
-            this.lblDV.Location = new System.Drawing.Point(34, 136);
+            this.lblDV.Location = new System.Drawing.Point(45, 167);
+            this.lblDV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDV.Name = "lblDV";
-            this.lblDV.Size = new System.Drawing.Size(22, 13);
+            this.lblDV.Size = new System.Drawing.Size(27, 17);
             this.lblDV.TabIndex = 43;
             this.lblDV.Text = "DV";
             // 
             // txtBoxDV
             // 
-            this.txtBoxDV.Location = new System.Drawing.Point(205, 136);
+            this.txtBoxDV.Location = new System.Drawing.Point(273, 167);
+            this.txtBoxDV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxDV.Name = "txtBoxDV";
-            this.txtBoxDV.Size = new System.Drawing.Size(186, 20);
+            this.txtBoxDV.Size = new System.Drawing.Size(247, 22);
             this.txtBoxDV.TabIndex = 44;
             // 
             // dTPickerFinish
             // 
-            this.dTPickerFinish.Location = new System.Drawing.Point(205, 291);
+            this.dTPickerFinish.Location = new System.Drawing.Point(273, 358);
+            this.dTPickerFinish.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dTPickerFinish.Name = "dTPickerFinish";
-            this.dTPickerFinish.Size = new System.Drawing.Size(200, 20);
+            this.dTPickerFinish.Size = new System.Drawing.Size(265, 22);
             this.dTPickerFinish.TabIndex = 33;
             // 
             // lblFinish
             // 
             this.lblFinish.AutoSize = true;
             this.lblFinish.BackColor = System.Drawing.SystemColors.Control;
-            this.lblFinish.Location = new System.Drawing.Point(34, 291);
+            this.lblFinish.Location = new System.Drawing.Point(45, 358);
+            this.lblFinish.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFinish.Name = "lblFinish";
-            this.lblFinish.Size = new System.Drawing.Size(126, 13);
+            this.lblFinish.Size = new System.Drawing.Size(164, 17);
             this.lblFinish.TabIndex = 32;
             this.lblFinish.Text = "Fecha de desvinculación";
             // 
@@ -184,9 +199,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(34, 334);
+            this.label1.Location = new System.Drawing.Point(45, 411);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.Size = new System.Drawing.Size(51, 17);
             this.label1.TabIndex = 45;
             this.label1.Text = "Causal";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -194,17 +210,19 @@
             // cmBoxCausal
             // 
             this.cmBoxCausal.FormattingEnabled = true;
-            this.cmBoxCausal.Location = new System.Drawing.Point(205, 334);
+            this.cmBoxCausal.Location = new System.Drawing.Point(273, 411);
+            this.cmBoxCausal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmBoxCausal.Name = "cmBoxCausal";
-            this.cmBoxCausal.Size = new System.Drawing.Size(200, 21);
+            this.cmBoxCausal.Size = new System.Drawing.Size(265, 24);
             this.cmBoxCausal.TabIndex = 46;
             // 
             // btnDesvinc
             // 
             this.btnDesvinc.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnDesvinc.Location = new System.Drawing.Point(449, 291);
+            this.btnDesvinc.Location = new System.Drawing.Point(599, 358);
+            this.btnDesvinc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDesvinc.Name = "btnDesvinc";
-            this.btnDesvinc.Size = new System.Drawing.Size(92, 49);
+            this.btnDesvinc.Size = new System.Drawing.Size(123, 60);
             this.btnDesvinc.TabIndex = 32;
             this.btnDesvinc.Text = "Aplicar cambios";
             this.btnDesvinc.UseVisualStyleBackColor = false;
@@ -212,18 +230,20 @@
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnBack.Location = new System.Drawing.Point(449, 361);
+            this.btnBack.Location = new System.Drawing.Point(599, 444);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(92, 49);
+            this.btnBack.Size = new System.Drawing.Size(123, 60);
             this.btnBack.TabIndex = 33;
             this.btnBack.Text = "Volver";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // Form6
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 450);
+            this.ClientSize = new System.Drawing.Size(731, 554);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.cmBoxCausal);
             this.Controls.Add(this.btnDesvinc);
@@ -243,6 +263,7 @@
             this.Controls.Add(this.lblAP);
             this.Controls.Add(this.txtBoxID);
             this.Controls.Add(this.lblAM);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form6";
             this.Text = "Form6";
             this.ResumeLayout(false);

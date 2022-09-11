@@ -19,12 +19,16 @@ namespace Aplicacion_RRHH
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            Form2 obj1 = new Form2();
+            obj1.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Form6 obj1 = new Form6();
+            obj1.Show();
+            this.Hide();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,7 +53,28 @@ namespace Aplicacion_RRHH
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Form3 obj1 = new Form3();
+            obj1.Show();
+            this.Hide();
+        }
 
+        private void btnIngTrab_Click(object sender, EventArgs e)
+        {
+            Form5 obj1 = new Form5();
+            obj1.Show();
+            this.Hide();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form4 obj1 = new Form4();
+            obj1.Show();
+            this.Hide();
         }
     }
 }
