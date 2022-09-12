@@ -1,18 +1,28 @@
-﻿using System;
+﻿using Aplicacion_RRHH.BD;
+using Aplicacion_RRHH.Model;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
+
 
 namespace Aplicacion_RRHH
 {
     public partial class Form7 : Form
     {
+        private DbTransaction transaction;
+
         public Form7()
         {
             InitializeComponent();
@@ -119,6 +129,36 @@ namespace Aplicacion_RRHH
 
         private void txtFile_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            MySqlConnection connection = Program.conectionDb();
+            connection.Open();
+            
+                // DbConnection that is already opened
+                using (Db context = new Db(connection, false))
+                {
+                  
+
+                    // DbSet.AddRange
+                    List<Employee> employees = new List<Employee>();
+
+                    employees.Add(new Employee { name = "Nissan" });
+                    employees.Add(new Employee { name = "asda" });
+                    employees.Add(new Employee { name = "ada" });
+                    
+                    context.employees.AddRange(employees);
+                    context.SaveChanges();
+                    connection.Close();
+                }
+           
+        }
+        
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
 
         }
     }

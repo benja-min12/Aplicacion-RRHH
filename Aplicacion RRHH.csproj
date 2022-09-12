@@ -115,7 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BD\Db.cs" />
-    <Compile Include="BD\Dbset2.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
