@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -140,8 +141,6 @@ namespace Aplicacion_RRHH
                 // DbConnection that is already opened
                 using (Db context = new Db(connection, false))
                 {
-                  
-
                     // DbSet.AddRange
                     List<Employee> employees = new List<Employee>();
 
@@ -153,7 +152,6 @@ namespace Aplicacion_RRHH
                     context.SaveChanges();
                     connection.Close();
                 }
-           
         }
         
         private void button4_Click(object sender, EventArgs e)

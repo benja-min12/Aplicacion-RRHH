@@ -34,14 +34,6 @@ namespace Aplicacion_RRHH
             this.dgItems = new System.Windows.Forms.DataGridView();
             this.txtFile = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.RUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AP_PATERNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AP_MATERNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NUMCONT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHDESVIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CAUSAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,15 +60,6 @@ namespace Aplicacion_RRHH
             // dgItems
             // 
             this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RUT,
-            this.DV,
-            this.NOMBRES,
-            this.AP_PATERNO,
-            this.AP_MATERNO,
-            this.NUMCONT,
-            this.FECHDESVIN,
-            this.CAUSAL});
             this.dgItems.Location = new System.Drawing.Point(27, 75);
             this.dgItems.Name = "dgItems";
             this.dgItems.RowHeadersWidth = 51;
@@ -103,62 +86,6 @@ namespace Aplicacion_RRHH
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // RUT
-            // 
-            this.RUT.HeaderText = "RUT";
-            this.RUT.MinimumWidth = 6;
-            this.RUT.Name = "RUT";
-            this.RUT.Width = 125;
-            // 
-            // DV
-            // 
-            this.DV.HeaderText = "DV";
-            this.DV.MinimumWidth = 6;
-            this.DV.Name = "DV";
-            this.DV.Width = 125;
-            // 
-            // NOMBRES
-            // 
-            this.NOMBRES.HeaderText = "NOMBRES";
-            this.NOMBRES.MinimumWidth = 6;
-            this.NOMBRES.Name = "NOMBRES";
-            this.NOMBRES.Width = 125;
-            // 
-            // AP_PATERNO
-            // 
-            this.AP_PATERNO.HeaderText = "APELLIDO PATERNO";
-            this.AP_PATERNO.MinimumWidth = 6;
-            this.AP_PATERNO.Name = "AP_PATERNO";
-            this.AP_PATERNO.Width = 125;
-            // 
-            // AP_MATERNO
-            // 
-            this.AP_MATERNO.HeaderText = "APELLIDO MATERNO";
-            this.AP_MATERNO.MinimumWidth = 6;
-            this.AP_MATERNO.Name = "AP_MATERNO";
-            this.AP_MATERNO.Width = 125;
-            // 
-            // NUMCONT
-            // 
-            this.NUMCONT.HeaderText = "NÚMERO CONTRATO";
-            this.NUMCONT.MinimumWidth = 6;
-            this.NUMCONT.Name = "NUMCONT";
-            this.NUMCONT.Width = 125;
-            // 
-            // FECHDESVIN
-            // 
-            this.FECHDESVIN.HeaderText = "FECHA DESVINCULACIÓN";
-            this.FECHDESVIN.MinimumWidth = 6;
-            this.FECHDESVIN.Name = "FECHDESVIN";
-            this.FECHDESVIN.Width = 125;
-            // 
-            // CAUSAL
-            // 
-            this.CAUSAL.HeaderText = "CAUSAL";
-            this.CAUSAL.MinimumWidth = 6;
-            this.CAUSAL.Name = "CAUSAL";
-            this.CAUSAL.Width = 125;
-            // 
             // Form8
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -184,13 +111,5 @@ namespace Aplicacion_RRHH
         private System.Windows.Forms.DataGridView dgItems;
         private System.Windows.Forms.TextBox txtFile;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RUT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRES;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AP_PATERNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AP_MATERNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NUMCONT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHDESVIN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CAUSAL;
     }
 }
