@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Aplicacion_RRHH.BD;
+using Aplicacion_RRHH.Model;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +33,7 @@ namespace Aplicacion_RRHH
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     dgItems.DataSource = ReadCsvFile(ofd.FileName);
+                    
                 }
             }
         }
@@ -78,7 +82,7 @@ namespace Aplicacion_RRHH
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

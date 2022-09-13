@@ -1,13 +1,17 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Aplicacion_RRHH.BD;
+using Aplicacion_RRHH.Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Contract = Aplicacion_RRHH.Model.Contract;
 
 namespace Aplicacion_RRHH
 {
@@ -95,6 +99,7 @@ namespace Aplicacion_RRHH
             {
                 ans_no = "no";
             }
+            
 
         }
 

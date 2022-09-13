@@ -23,6 +23,7 @@ namespace Aplicacion_RRHH
     public partial class Form7 : Form
     {
         private DbTransaction transaction;
+       
 
         public Form7()
         {
@@ -31,6 +32,73 @@ namespace Aplicacion_RRHH
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MySqlConnection connection = Program.conectionDb();
+            connection.Open();
+
+            // DbConnection that is already opened
+            using (Db context = new Db(connection, false))
+            {
+                List<Employee> employees = new List<Employee>();
+                List<Contract> contracts = new List<Contract>();
+
+                foreach (DataGridViewRow row in dgItems.Rows)
+                {
+                    Debug.WriteLine(row);
+                    if(row.Cells[0].Value != null)
+                    {
+                        Employee employee = new Employee();
+                        Contract contract = new Contract();
+                        string rutStr = row.Cells[0].Value.ToString();
+                        int rut=0;
+                        Debug.WriteLine(rutStr);
+                        try
+                        {
+                            rut= Convert.ToInt32(rutStr);
+                            System.Console.WriteLine(rut);
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Invalid String");
+                        }
+                        catch (OverflowException)
+                        {
+                            Console.WriteLine("The string cannot fit in 32 bit value");
+                        }
+                        
+                        employee.rut = rut;
+                        employee.dv = row.Cells[1].Value.ToString();
+                        employee.name = row.Cells[2].Value.ToString();
+                        employee.lastnameM = row.Cells[3].Value.ToString();
+                        employee.lastnameP = row.Cells[4].Value.ToString();
+                        employee.title= row.Cells[7].Value.ToString();
+                        contract.isValid = true;
+                        contract.job= row.Cells[7].Value.ToString();
+                        contract.rut = rut+"-"+employee.dv;
+                        contract.proyect= row.Cells[6].Value.ToString();
+                        contract.typeContract= row.Cells[9].Value.ToString();
+                        contract.nameEmployee = employee.name;
+                        contract.workingDay = row.Cells[5].Value.ToString();
+                        try
+                        {
+                            contract.startDate = Convert.ToDateTime(row.Cells[8].Value.ToString());
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Invalid String");
+                        }
+                      
+                        
+
+                        contracts.Add(contract);
+                        employees.Add(employee);
+                    }
+                }
+               
+                context.employees.AddRange(employees);
+                context.contracts.AddRange(contracts);
+                context.SaveChanges();
+                connection.Close();
+            }
             
         }
 
@@ -135,23 +203,7 @@ namespace Aplicacion_RRHH
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            MySqlConnection connection = Program.conectionDb();
-            connection.Open();
-            
-                // DbConnection that is already opened
-                using (Db context = new Db(connection, false))
-                {
-                    // DbSet.AddRange
-                    List<Employee> employees = new List<Employee>();
-
-                    employees.Add(new Employee { name = "Nissan" });
-                    employees.Add(new Employee { name = "asda" });
-                    employees.Add(new Employee { name = "ada" });
-                    
-                    context.employees.AddRange(employees);
-                    context.SaveChanges();
-                    connection.Close();
-                }
+           
         }
         
         private void button4_Click(object sender, EventArgs e)
