@@ -34,7 +34,9 @@ namespace Aplicacion_RRHH
 
         private void Form5_Load(object sender, EventArgs e)
         {
-
+            cmBoxProf.Items.Add("Profesional");
+            cmBoxProf.Items.Add("Técnico");
+            cmBoxProf.Items.Add("Sin título");
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -47,6 +49,11 @@ namespace Aplicacion_RRHH
             Form1 obj1 = new Form1();
             obj1.Show();
             this.Hide();
+        }
+
+        private void cmBoxProf_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
