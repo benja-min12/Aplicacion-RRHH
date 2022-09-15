@@ -146,7 +146,7 @@ namespace Aplicacion_RRHH
                     }
 
                 }
-               
+                MessageBox.Show("Se han actualizado los contratos");
                 connection.Close();
             }
         }
