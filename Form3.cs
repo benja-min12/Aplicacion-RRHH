@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,22 @@ namespace Aplicacion_RRHH
         public Form3()
         {
             InitializeComponent();
+            MySqlConnection connection = Program.conectionDb();
+            connection.Open();
+
+            // DbConnection that is already opened
+            using (var context = new Db(connection, false))
+            {
+                List<Employee> employees = context.employees.ToList<Employee>();
+
+                foreach (Employee employee in employees)
+                {
+                    dataGridView1.Rows.Add(employee.rut+"-"+employee.dv, employee.name, employee.lastnameM + " " + employee.lastnameP, employee.nationality, employee.email, employee.address, employee.title, employee.phone, employee.id);
+                }
+
+
+
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -46,29 +63,14 @@ namespace Aplicacion_RRHH
         {
         }
 
-        private void btnModify_Click(object sender, EventArgs e)
+        
+       
+        private void dataGridView1_CellClick (object sender, DataGridViewCellEventArgs e)
         {
-            MySqlConnection connection = Program.conectionDb();
-            connection.Open();
-
-            // DbConnection that is already opened
-            using (var context = new Db(connection, false))
-            {
-                List<Employee> employees=context.employees.ToList<Employee>();
-
-                foreach (Employee employee in employees)
-                {
-                   dataGridView1.Rows.Add(employee.rut, employee.name, employee.lastnameM + " " + employee.lastnameP ,employee.nationality, employee.email, employee.address, employee.title, employee.phone,employee.id);
-                }
-
-
-                
-            }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
+            int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
+            Form5 obj5 = new Form5(id);
+            obj5.Show();
+            this.Hide();
         }
     }
 }

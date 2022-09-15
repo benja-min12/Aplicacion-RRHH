@@ -29,10 +29,17 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.btnModify = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
             this.btnBac = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.NContratos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Salario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jornada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -41,71 +48,92 @@
             this.lblTitle.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.lblTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(37, 26);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitle.Location = new System.Drawing.Point(28, 21);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(287, 33);
+            this.lblTitle.Size = new System.Drawing.Size(233, 27);
             this.lblTitle.TabIndex = 4;
             this.lblTitle.Text = "Listado de Contratos";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(37, 76);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(592, 548);
-            this.listBox1.TabIndex = 4;
-            // 
-            // btnModify
-            // 
-            this.btnModify.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnModify.Location = new System.Drawing.Point(675, 468);
-            this.btnModify.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(141, 64);
-            this.btnModify.TabIndex = 4;
-            this.btnModify.Text = "Modificar contrato";
-            this.btnModify.UseVisualStyleBackColor = false;
-            // 
-            // btnBack
-            // 
-            this.btnBack.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnBack.Location = new System.Drawing.Point(853, 561);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(141, 64);
-            this.btnBack.TabIndex = 4;
-            this.btnBack.Text = "Volver";
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnBac
             // 
             this.btnBac.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnBac.Location = new System.Drawing.Point(675, 561);
-            this.btnBac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBac.Location = new System.Drawing.Point(586, 456);
             this.btnBac.Name = "btnBac";
-            this.btnBac.Size = new System.Drawing.Size(141, 64);
+            this.btnBac.Size = new System.Drawing.Size(106, 52);
             this.btnBac.TabIndex = 55;
             this.btnBac.Text = "Volver";
             this.btnBac.UseVisualStyleBackColor = false;
             this.btnBac.Click += new System.EventHandler(this.btnBac_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NContratos,
+            this.Rut,
+            this.Nombre,
+            this.Cargo,
+            this.Salario,
+            this.Proyecto,
+            this.Tipo,
+            this.Jornada});
+            this.dataGridView1.Location = new System.Drawing.Point(28, 78);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(861, 331);
+            this.dataGridView1.TabIndex = 56;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // NContratos
+            // 
+            this.NContratos.HeaderText = "N° Contrato";
+            this.NContratos.Name = "NContratos";
+            // 
+            // Rut
+            // 
+            this.Rut.HeaderText = "Rut";
+            this.Rut.Name = "Rut";
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre Trabajador";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Cargo
+            // 
+            this.Cargo.HeaderText = "Cargo";
+            this.Cargo.Name = "Cargo";
+            // 
+            // Salario
+            // 
+            this.Salario.HeaderText = "Salario";
+            this.Salario.Name = "Salario";
+            // 
+            // Proyecto
+            // 
+            this.Proyecto.HeaderText = "Proyecto";
+            this.Proyecto.Name = "Proyecto";
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo Contrato";
+            this.Tipo.Name = "Tipo";
+            // 
+            // Jornada
+            // 
+            this.Jornada.HeaderText = "Jornada";
+            this.Jornada.Name = "Jornada";
+            // 
             // Form4
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 663);
+            this.ClientSize = new System.Drawing.Size(906, 539);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnBac);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnModify);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form4";
             this.Text = "Form4";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,9 +142,15 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button btnModify;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnBac;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NContratos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cargo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Salario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proyecto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Jornada;
     }
 }

@@ -40,7 +40,7 @@ namespace Aplicacion_RRHH.BD
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Employee>().MapToStoredProcedures().Property(p => p.dv)
             .HasColumnType("char"); ;
-            modelBuilder.Entity<Contract>().MapToStoredProcedures();
+            modelBuilder.Entity<Contract>().MapToStoredProcedures(); ;
       
 
 

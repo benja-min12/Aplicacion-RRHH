@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -33,7 +35,7 @@ namespace Aplicacion_RRHH
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     dgItems.DataSource = ReadCsvFile(ofd.FileName);
-                    
+
                 }
             }
         }
@@ -82,7 +84,63 @@ namespace Aplicacion_RRHH
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+            MySqlConnection connection = Program.conectionDb();
+            connection.Open();
+            List<Contract> contracts = new List<Contract>();
+            using (Db context = new Db(connection, false))
+            {
+                foreach (DataGridViewRow row in dgItems.Rows)
+                {
+                   
+                    Contract contract = new Contract();
+                    if (row.Cells[5].Value != null)
+                    {
+                        string nContractStr = row.Cells[5].Value.ToString();
+                        int nContract = 0;
+
+
+                        try
+                        {
+                            nContract = Convert.ToInt32(nContractStr);
+
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Invalid String");
+                        }
+                        catch (OverflowException)
+                        {
+                            Console.WriteLine("The string cannot fit in 32 bit value");
+                        }
+                        contract = context.contracts.FirstOrDefault(c => c.nContract == nContract);
+                        if (contract != null)
+                        {
+                            //edit contract isvalid
+                            contract.isValid = false;
+                            try
+                            {
+                                contract.dateFinish = Convert.ToDateTime(row.Cells[6].Value.ToString());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Invalid String");
+                            }
+                            contract.reason = row.Cells[7].Value.ToString();
+                            string query = "UPDATE `rrhh`.`contracts` SET `isValid` = '0', `reason` = '"+contract.reason+"', `dateFinish` = '"+contract.dateFinish.ToString("yyyy-MM-dd") +"' WHERE (`Id` = '"+contract.Id+"');";
+                            context.Database.ExecuteSqlCommand(query);
+                        }else if(nContract!=0){
+                            MessageBox.Show("El contrato con numero " + nContract + " de la persona con rut "+ row.Cells[0].Value.ToString()+"-"+row.Cells[1].Value.ToString()+ " no existe");
+                        }
+                        
+
+
+                    }
+
+                }
+               
+                connection.Close();
+            }
         }
     }
 }
+

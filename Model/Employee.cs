@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Aplicacion_RRHH.Model
 {
     public class Employee
     {
+        
         public int id { get; set; }
         public int rut { get; set; }
         public string dv { get; set;}

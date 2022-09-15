@@ -23,7 +23,6 @@ namespace Aplicacion_RRHH
     public partial class Form7 : Form
     {
         private DbTransaction transaction;
-       
 
         public Form7()
         {
@@ -38,8 +37,7 @@ namespace Aplicacion_RRHH
             // DbConnection that is already opened
             using (Db context = new Db(connection, false))
             {
-                List<Employee> employees = new List<Employee>();
-                List<Contract> contracts = new List<Contract>();
+                
 
                 foreach (DataGridViewRow row in dgItems.Rows)
                 {
@@ -49,54 +47,185 @@ namespace Aplicacion_RRHH
                         Employee employee = new Employee();
                         Contract contract = new Contract();
                         string rutStr = row.Cells[0].Value.ToString();
-                        int rut=0;
-                        Debug.WriteLine(rutStr);
-                        try
+                        if (rutStr != "")
                         {
-                            rut= Convert.ToInt32(rutStr);
-                            System.Console.WriteLine(rut);
-                        }
-                        catch (FormatException)
-                        {
-                            Console.WriteLine("Invalid String");
-                        }
-                        catch (OverflowException)
-                        {
-                            Console.WriteLine("The string cannot fit in 32 bit value");
-                        }
-                        
-                        employee.rut = rut;
-                        employee.dv = row.Cells[1].Value.ToString();
-                        employee.name = row.Cells[2].Value.ToString();
-                        employee.lastnameM = row.Cells[3].Value.ToString();
-                        employee.lastnameP = row.Cells[4].Value.ToString();
-                        employee.title= row.Cells[7].Value.ToString();
-                        contract.isValid = true;
-                        contract.job= row.Cells[7].Value.ToString();
-                        contract.rut = rut+"-"+employee.dv;
-                        contract.proyect= row.Cells[6].Value.ToString();
-                        contract.typeContract= row.Cells[9].Value.ToString();
-                        contract.nameEmployee = employee.name;
-                        contract.workingDay = row.Cells[5].Value.ToString();
-                        try
-                        {
-                            contract.startDate = Convert.ToDateTime(row.Cells[8].Value.ToString());
-                        }
-                        catch (FormatException)
-                        {
-                            Console.WriteLine("Invalid String");
-                        }
-                      
-                        
+                            int rut = 0;
+                          
+                            try
+                            {
+                                rut = Convert.ToInt32(rutStr);
+                                System.Console.WriteLine(rut);
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Invalid String");
+                            }
+                            catch (OverflowException)
+                            {
+                                Console.WriteLine("The string cannot fit in 32 bit value");
+                            }
+                            // verificar si existe el rut
+                            if(context.employees.Where(x => x.rut == rut).Count()<=0)
+                            {
+                                employee.rut = rut;
+                                employee.dv = row.Cells[1].Value.ToString();
+                                employee.name = row.Cells[2].Value.ToString();
+                                employee.lastnameM = row.Cells[3].Value.ToString();
+                                employee.lastnameP = row.Cells[4].Value.ToString();
+                                context.employees.Add(employee);
+                            }
+                            else
+                            {
+                                employee = context.employees.Where(x => x.rut == rut).First();
+                            }
+                            //Debug.WriteLine(context.contracts.Where(x => x.rut == employee.rut + "-" + employee.dv).First());
 
-                        contracts.Add(contract);
-                        employees.Add(employee);
+                            // verificar si el empleado tiene contrato valido
+                            if (context.contracts.Where(x => x.rut == employee.rut + "-"+employee.dv).Count()>0){
+                                bool isValid = false;
+                                List<Contract> contractAux = context.contracts.Where(x => x.rut == employee.rut + "-"+employee.dv).ToList();
+                                foreach(Contract c in contractAux)
+                                {
+                                    if (c.isValid)
+                                    {
+                                        isValid = true;
+                                    }
+                                }
+                   
+                                if (!isValid)
+                                {
+                                    contract.isValid = true;
+                                    contract.job = row.Cells[7].Value.ToString();
+                                    contract.rut = rut + "-" + employee.dv;
+                                    contract.proyect = row.Cells[6].Value.ToString();
+                                    contract.typeContract = row.Cells[9].Value.ToString();
+                                    contract.nameEmployee = employee.name;
+                                    contract.workingDay = row.Cells[5].Value.ToString();
+                                    try
+                                    {
+                                        contract.startDate = Convert.ToDateTime(row.Cells[8].Value.ToString());
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        Console.WriteLine("Invalid String");
+                                    }
+                                    if (contract.typeContract == "TEMPORAL")
+                                    {
+                                        int months = row.Cells[10].Value.ToString() == "" ? 0 : Convert.ToInt32(row.Cells[10].Value.ToString());
+                                        contract.endDate = contract.startDate.AddMonths(months);
+                                    }
+                                    else
+                                    {
+                                        contract.endDate = new DateTime(9999, 12, 31);
+                                    }
+                                    string salaryStr = row.Cells[11].Value.ToString();
+                                    int salary = 0;
+                                    string[] charsToRemove = new string[] { "$", "." };
+                                    foreach (var c in charsToRemove)
+                                    {
+                                        salaryStr = salaryStr.Replace(c, "");
+                                    }
+                                    try
+                                    {
+                                        salary = Convert.ToInt32(salaryStr);
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        Console.WriteLine("Invalid String");
+                                    }
+                                    catch (OverflowException)
+                                    {
+                                        Console.WriteLine("The string cannot fit in 32 bit value");
+                                    }
+
+                                    contract.salary = salary;
+                                    Random rnd = new Random();
+                                    int contractNumber = rnd.Next(100000, 999999);
+                                    while (context.contracts.Where(c => c.nContract == contractNumber).Count() > 0)
+                                    {
+                                        contractNumber = rnd.Next(100000, 999999);
+                                    }
+
+                                    contract.nContract = contractNumber;
+                                    contract.Employee = employee;
+                                    context.contracts.Add(contract);
+                                    context.SaveChanges();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El rut " + rut+"-"+employee.dv+ " ya tiene un contrato valido");
+                                }
+                            }
+                            else
+                            {
+                                contract.isValid = true;
+                                contract.job = row.Cells[7].Value.ToString();
+                                contract.rut = rut + "-" + employee.dv;
+                                contract.proyect = row.Cells[6].Value.ToString();
+                                contract.typeContract = row.Cells[9].Value.ToString();
+                                contract.nameEmployee = employee.name;
+                                contract.workingDay = row.Cells[5].Value.ToString();
+                                try
+                                {
+                                    contract.startDate = Convert.ToDateTime(row.Cells[8].Value.ToString());
+                                }
+                                catch (FormatException)
+                                {
+                                    Console.WriteLine("Invalid String");
+                                }
+                                if (contract.typeContract == "TEMPORAL")
+                                {
+                                    int months = row.Cells[10].Value.ToString() == "" ? 0 : Convert.ToInt32(row.Cells[10].Value.ToString());
+                                    contract.endDate = contract.startDate.AddMonths(months);
+                                }
+                                string salaryStr = row.Cells[11].Value.ToString();
+                                int salary = 0;
+                                string[] charsToRemove = new string[] { "$", "." };
+                                foreach (var c in charsToRemove)
+                                {
+                                    salaryStr = salaryStr.Replace(c, "");
+                                }
+                                try
+                                {
+                                    salary = Convert.ToInt32(salaryStr);
+                                }
+                                catch (FormatException)
+                                {
+                                    Console.WriteLine("Invalid String");
+                                }
+                                catch (OverflowException)
+                                {
+                                    Console.WriteLine("The string cannot fit in 32 bit value");
+                                }
+
+                                contract.salary = salary;
+                                Random rnd = new Random();
+                                int contractNumber = rnd.Next(100000, 999999);
+                                while (context.contracts.Where(c => c.nContract == contractNumber).Count() > 0)
+                                {
+                                    contractNumber = rnd.Next(100000, 999999);
+                                }
+
+                                contract.nContract = contractNumber;
+                                contract.Employee = employee;
+                                context.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+                                context.contracts.Add(contract);
+                                context.SaveChanges();
+                            }
+                            
+                      
+                            
+                            
+
+                        }
+                        
+                        
                     }
                 }
-               
-                context.employees.AddRange(employees);
-                context.contracts.AddRange(contracts);
+
+
                 context.SaveChanges();
+                MessageBox.Show("Contrataciones ingresadas con exito");
                 connection.Close();
             }
             
@@ -139,7 +268,14 @@ namespace Aplicacion_RRHH
                             string[] data = rows[i].Split(';');
                             DataRow dr = dt.NewRow();
                             for (int k = 0; k < data.Count(); k++)
-                                dr[k] = data[k];
+                            {
+                                if (data[0] != null)
+                                {
+                                    dr[k] = data[k];
+                                }
+                            
+                            }
+                              
                             dt.Rows.Add(dr);
                         }
                     }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Aplicacion_RRHH.BD;
+using Aplicacion_RRHH.Model;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +18,27 @@ namespace Aplicacion_RRHH
         public Form4()
         {
             InitializeComponent();
+            MySqlConnection connection = Program.conectionDb();
+            connection.Open();
+
+            // DbConnection that is already opened
+            using (var context = new Db(connection, false))
+            {
+                List<Contract> contracts = context.contracts.ToList<Contract>();
+
+                foreach (Contract contract in contracts)
+                {
+
+                    dataGridView1.Rows.Add(contract.nContract, contract.rut, contract.nameEmployee, contract.job, contract.salary, contract.proyect, contract.typeContract, contract.workingDay);
+                }
+
+
+
+            }
+
+
         }
+       
 
         private void btnBac_Click(object sender, EventArgs e)
         {
@@ -24,11 +47,11 @@ namespace Aplicacion_RRHH
             this.Hide();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Form1 obj1 = new Form1();
-            obj1.Show();
-            this.Hide();
+
         }
+
+        
     }
 }
