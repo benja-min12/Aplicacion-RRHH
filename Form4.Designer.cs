@@ -57,7 +57,7 @@
             // btnBac
             // 
             this.btnBac.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnBac.Location = new System.Drawing.Point(586, 456);
+            this.btnBac.Location = new System.Drawing.Point(378, 451);
             this.btnBac.Name = "btnBac";
             this.btnBac.Size = new System.Drawing.Size(106, 52);
             this.btnBac.TabIndex = 55;

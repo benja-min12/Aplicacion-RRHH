@@ -115,19 +115,28 @@ namespace Aplicacion_RRHH
                         contract = context.contracts.FirstOrDefault(c => c.nContract == nContract);
                         if (contract != null)
                         {
+                            if (contract.rut == row.Cells[0].Value.ToString() + "-" + row.Cells[1].Value.ToString())
+                            {
+                                contract.isValid = false;
+                                try
+                                {
+                                    contract.dateFinish = Convert.ToDateTime(row.Cells[6].Value.ToString());
+                                }
+                                catch (FormatException)
+                                {
+                                    Console.WriteLine("Invalid String");
+                                }
+                                contract.reason = row.Cells[7].Value.ToString();
+                                string query = "UPDATE `rrhh`.`contracts` SET `isValid` = '0', `reason` = '" + contract.reason + "', `dateFinish` = '" + contract.dateFinish.ToString("yyyy-MM-dd") + "' WHERE (`Id` = '" + contract.Id + "');";
+                                context.Database.ExecuteSqlCommand(query);
+                            }
+                            else
+                            {
+                                MessageBox.Show("El rut de la persona "+ row.Cells[0].Value.ToString() + "-" + row.Cells[1].Value.ToString() + " no coincide con el numero de contrato "+nContract);
+                            }
+                            
                             //edit contract isvalid
-                            contract.isValid = false;
-                            try
-                            {
-                                contract.dateFinish = Convert.ToDateTime(row.Cells[6].Value.ToString());
-                            }
-                            catch (FormatException)
-                            {
-                                Console.WriteLine("Invalid String");
-                            }
-                            contract.reason = row.Cells[7].Value.ToString();
-                            string query = "UPDATE `rrhh`.`contracts` SET `isValid` = '0', `reason` = '"+contract.reason+"', `dateFinish` = '"+contract.dateFinish.ToString("yyyy-MM-dd") +"' WHERE (`Id` = '"+contract.Id+"');";
-                            context.Database.ExecuteSqlCommand(query);
+                           
                         }else if(nContract!=0){
                             MessageBox.Show("El contrato con numero " + nContract + " de la persona con rut "+ row.Cells[0].Value.ToString()+"-"+row.Cells[1].Value.ToString()+ " no existe");
                         }

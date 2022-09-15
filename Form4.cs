@@ -24,7 +24,7 @@ namespace Aplicacion_RRHH
             // DbConnection that is already opened
             using (var context = new Db(connection, false))
             {
-                List<Contract> contracts = context.contracts.ToList<Contract>();
+                List<Contract> contracts = context.contracts.Where(c => c.isValid == true).ToList<Contract>();
 
                 foreach (Contract contract in contracts)
                 {
